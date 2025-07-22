@@ -86,8 +86,12 @@ public class TransactionService {
         }
     }
 
-    private void compensateTransactionCreation(Transaction transaction) {
-
+    public void compensateTransactionCreation(Transaction transaction) {
+        try {
+            transactionRepository.delete(transaction);
+        } catch (Exception e) {
+            log.error("Compensation failed for transaction: {}", transaction.getId(), e);
+        }
     }
 
     /**
