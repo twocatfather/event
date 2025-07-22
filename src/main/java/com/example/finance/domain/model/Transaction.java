@@ -40,6 +40,9 @@ public class Transaction {
     private TransactionType type;
 
     @Column(nullable = false)
+    private LocalDateTime transactionDate;
+
+    @Column(nullable = false)
     private LocalDateTime createdAt;
 
     @Column
